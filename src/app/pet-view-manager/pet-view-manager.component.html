@@ -1,0 +1,41 @@
+
+<div class="table-responsive">
+    <br>
+<table class="table mb-0">
+    <thead>
+        <tr>
+
+            <th>Pet Name</th>
+            <th>Breed</th>
+            <th>Gender</th>
+            <th>Birth Date</th>
+            <th>Death Date</th>
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pets of AllPets" class="text-center">
+
+            <td>{{pets.name}}</td>
+            <td>{{pets.breed}}</td>
+            <td>{{pets.gender}}</td>
+            <td>{{pets.birthDate}}</td>
+            <td>{{pets.deathDate}}</td>
+
+            <td>
+                <button class="Delete_Info" mat-raised-button color="basic" [routerLink]="['/editPet', pets.id]"><mat-icon>edit</mat-icon></button>
+                <button class="Delete_Info" mat-raised-button color="basic" (click)="deleteInformation(pets.id)"><mat-icon>delete</mat-icon></button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button class="Register" mat-raised-button color="basic" routerLink="/addPath" routerLinkActive="active">
+             Register
+           </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
