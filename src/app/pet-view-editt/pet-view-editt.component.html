@@ -1,0 +1,57 @@
+<mat-card class="example-card">
+    <div class="container" *ngIf="isUpdated">
+
+        <legend>Basic Pet Information</legend>
+        <form class="add-form" [formGroup]="updateform" (ngSubmit)="UpdatePet()" #myForm="ngForm">
+
+
+
+            <mat-form-field>
+                <mat-label>Pet Name</mat-label>
+                <input matInput placeholder="Pet Name" formControlName="name" [(ngModel)]="pet.name">
+                <mat-error *ngIf="updateform.get('name')?.touched
+                && updateform.get('name')?.hasError('required')">
+                    name is required</mat-error>
+            </mat-form-field>
+
+
+
+            <mat-form-field>
+                <mat-label>Pet Breed</mat-label>
+                <input matInput placeholder="Pet Bread" formControlName="breed" [(ngModel)]="pet.breed">
+                <mat-error *ngIf="updateform.get('breed')?.touched
+                && updateform.get('breed')?.hasError('required')">
+                    Breed is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="picker1" placeholder="Birth Date" formControlName="birthDate" [(ngModel)]="pet.birthDate">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-error *ngIf="updateform.get('birthDate')?.touched
+                && updateform.get('birthDate')?.hasError('required')">
+                    Date is required</mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>End Date</mat-label>
+                <input matInput [matDatepicker]="picker2" placeholder="Death Date" formControlName="deathDate" [(ngModel)]="pet.deathDate">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error *ngIf="updateform.get('deathDate')?.touched
+                && updateform.get('deathDate')?.hasError('required')">
+                    Date is required</mat-error>
+
+            </mat-form-field>
+
+            <nav id="Buttons">
+
+                <button class="btn btn-outline-primary btn-sm" mat-raised-button color="primary" routerLinkActive="active" type="submit" [disabled]="!myForm.form.valid">Save</button>
+               
+                <button id="Cancel"  mat-raised-button color="" routerLinkActive="active" routerLink="/Home">Cancel</button>
+            </nav>
+        </form>
+    </div>
+</mat-card>
