@@ -4,4 +4,4 @@ serveStatic = require('serve-static');
 var app = connect();
 
 app.use(serveStatic("dist/petmanager-ui-master"))
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 80);
